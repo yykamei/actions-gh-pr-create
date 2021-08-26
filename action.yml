@@ -16,7 +16,7 @@ inputs:
   label:
     description: The label for a pull request.
     required: false
-    default: ''
+    default: ""
 runs:
   using: composite
   steps:

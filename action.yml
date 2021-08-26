@@ -20,8 +20,9 @@ runs:
     - name: git-push(1)
       shell: bash -euxo pipefail {0}
       run: |
-        changes=$(git status --short | wc -l)
-        if [[ "$changes" == "0" ]]; then
+        DIFF=0
+        git diff --quiet --exit-code origin/main || DIFF=1
+        if [[ "$DIFF" == "0" ]]; then
           echo "Nothing to change"
           exit 0
         fi
